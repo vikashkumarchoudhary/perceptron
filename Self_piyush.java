@@ -105,6 +105,7 @@ public class Self_piyush implements packages,classes,mains,Sopln
 
 		}
 		}
+		a1[1]=1;
 		if((a1[1] + a2[1] + a3[1] + a4[0]) > 3)
 			return 1;
 		else
