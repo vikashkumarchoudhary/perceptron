@@ -84,9 +84,18 @@ public class Self_piyush implements packages,classes,mains,Sopln
 		a2[] = new double[2];
 		a3[] = new double[2];
 		a4[] = new double[1];*/	
-		a1[0] = a1[1] = 1;
+		a1[0] = 1;
 		a2[0] = 1;
 		a3[0] = 1;
+		for(int i1 = 0;i1<inputs.length;i1++)
+                {
+                        int j1 = 0;
+                                a1[1] = inputs[i1][j1];
+                                a2[1] = inputs[i1][j1];
+                                a3[1] = inputs[i1][j1];
+                                a4[0] = inputs[i1][j1];
+                 
+
 		for(int i = 0;i<epoch;i++)
 		{
 			
@@ -94,6 +103,7 @@ public class Self_piyush implements packages,classes,mains,Sopln
 			a3[1] = sigmoid(a2[0]*theta2[0] + a2[1]*theta2[1]);
 			a4[0] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
 
+		}
 		}
 		if((a1[1] + a2[1] + a3[1] + a4[0]) > 3)
 			return 1;
@@ -119,10 +129,10 @@ public class Self_piyush implements packages,classes,mains,Sopln
 		String param = sc.nextLine();
 		System.out.println("Scanner or BufferReader");
 		String ch = sc.nextLine();
-			/*System.out.println(a1[1]);
+			System.out.println(a1[1]);
 			System.out.println(a2[1]);
 			System.out.println(a3[1]);
-			System.out.println(a4[0]);*/
+			System.out.println(a4[0]);
 		if(a1[1] >= 0.5)
 		{
 			if(ch == "scanner")
