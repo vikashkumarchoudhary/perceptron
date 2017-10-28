@@ -98,8 +98,7 @@ public class ProgPerceptron
 	static double theta1[] = new double[2];
 	static double theta2[] = new double[2];
 	static double theta3[] = new double[2];
-	static double theta4[] = new double[2];
-	static double theta5[] = new double[2];
+	static double theta4[] = new double[4];
 	static double a1[] = new double[2];
 	static double a2[] = new double[2];
 	static double a3[] = new double[2];
@@ -112,15 +111,23 @@ public class ProgPerceptron
 		theta2[] = new double[2];
 		theta3[] = new double[2];
 		theta4[] = new double[1];*/
-		for(int i = 0;i<2;i++)
+
+
+
+		// why is this loop running 2 times??
+		//
+		// why there are 5 weitage??
+		// ===============================
+		
+		for(int i = 0;i < 2;i++)
 		{
 			theta1[i] = r.nextDouble();
 			theta2[i] = r.nextDouble();
 			theta3[i] = r.nextDouble();
 			theta4[i] = r.nextDouble();
-			theta5[i]=r.nextDouble();
 		}
-		theta4[0] = r.nextDouble();
+		theta4[2] = r.nextDouble();
+		theta4[3] = r.nextDouble();
 		/*a1[] = new double[2];
 		a2[] = new double[2];
 		a3[] = new double[2];
@@ -128,18 +135,38 @@ public class ProgPerceptron
 		a1[0] = a1[1] = 1;
 		a2[0] = 1;
 		a3[0] = 1;
-		a4[0]=1; //a4[1]=1;
-		for(int i = 0;i<epoch;i++)
+		//a4[0]=1; //a4[1]=1;
+		for(int i1 = 0;i1 < inputs.length;i1++)
 		{
+			int j1 = 0;
+			a2[1] = inputs[i1][j1];
+			a3[1] = inputs[i1][j1+1];
+			a4[0] = inputs[i1][j1+2];
+			a4[1] = inputs[i1][j1+3];
+			a4[2] = inputs[i1][j1+4];
+			a4[3] = inputs[i1][j1+5];
+			for(int i = 0;i<epoch;i++)
+			{
+				theta3[0] = r.nextDouble();
+				theta3[1] = r.nextDouble();	
+				a2[1] = sigmoid(a1[0]*theta1[0] + a1[1]*theta1[1]);
+				a3[1] = sigmoid(a2[0]*theta2[0] + a2[1]*theta2[1]);
+				a4[0] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				//a4[1] = sigmoid(a4[0]*theta4[0]+a4[1]*theta4[1]);
+				//a4[3]=sigmoid(a4[1]*theta5[0]+a4[2]*theta5[1]);
+				 theta3[0] = r.nextDouble();
+				                                 theta3[1] = r.nextDouble();
+				a4[1] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				 theta3[0] = r.nextDouble();
+				                                 theta3[1] = r.nextDouble();
+				a4[2] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				 theta3[0] = r.nextDouble();
+				                                 theta3[1] = r.nextDouble();
+				a4[3] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+			}
 			
-			a2[1] = sigmoid(a1[0]*theta1[0] + a1[1]*theta1[1]);
-			a3[1] = sigmoid(a2[0]*theta2[0] + a2[1]*theta2[1]);
-			a4[1] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
-			a4[2]=sigmoid(a4[0]*theta4[0]+a4[1]*theta4[1]);
-			a4[3]=sigmoid(a4[1]*theta5[0]+a4[2]*theta5[1]);
-
 		}
-		if((a1[1] + a2[1] + a3[1] + a4[0]) > 3)
+		if((a1[1] + a2[1] + a3[1] + a4[0] + a4[1] + a4[2] + a4[3]) > 6)
 			return 1;
 		else
 			return 0;
@@ -154,9 +181,14 @@ public class ProgPerceptron
 	public static void main(String args[])
 	{
 		ProgPerceptron t = new ProgPerceptron();
-
-		int aps[][] = {{1,1,1,1,1,1},{1,1,1,0,0,0},{1,1,0,1,0,0},{1,0,1,0,0,0},{0,0,1,1,0,0}};
-		int apss[] = {1,0,0,0,0};
+/* ====
+ *
+ *what is this training???
+ *
+ *
+ *==== */
+		int aps[][] = {{1,1,1,1,1,1},{1,1,0,0,0,1},{1,1,0,1,0,0},{1,0,1,0,0,0},{0,0,1,1,0,0}};
+		int apss[] = {1,1,0,0,0};
 		t.train(aps,apss,200);
 		Scanner sc = new Scanner(System.in);		
 		System.out.println("Fibonacci/Odd Even/Printing ?");
@@ -177,10 +209,13 @@ public class ProgPerceptron
 				System.out.println("What do you want to print?");
 		        param = sc.nextLine();
 			}
-			/*System.out.println(a1[1]);
+			System.out.println(a1[1]);
 			System.out.println(a2[1]);
 			System.out.println(a3[1]);
-			System.out.println(a4[0]);*/
+			System.out.println(a4[0]);
+			System.out.println(a4[1]);
+			System.out.println(a4[2]);
+			System.out.println(a4[3]);
 			System.out.println("\n");
 		if(a1[1] >= 0.5)
 		{
