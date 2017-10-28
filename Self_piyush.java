@@ -91,9 +91,9 @@ public class Self_piyush implements packages,classes,mains,Sopln
                 {
                         int j1 = 0;
                                 a1[1] = inputs[i1][j1];
-                                a2[1] = inputs[i1][j1];
-                                a3[1] = inputs[i1][j1];
-                                a4[0] = inputs[i1][j1];
+                                a2[1] = inputs[i1][j1+1];
+                                a3[1] = inputs[i1][j1+2];
+                                a4[0] = inputs[i1][j1+3];
                  
 
 		for(int i = 0;i<epoch;i++)
