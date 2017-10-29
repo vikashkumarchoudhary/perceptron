@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 public class ProgPerceptron
 {
-	public void Spack()
+	/*public void Spack()
 	{
 		System.out.println("import.java.util.*;");
 	}
@@ -19,7 +19,35 @@ public class ProgPerceptron
 	public void Bobj()
 	{
 		System.out.println("BufferedReader br = new BufferedReader(new InputStreamReader);");
-	}
+	}*/
+	public static int keywordstack(String key)
+	{
+		String array[] = {
+                 "abstract",  "assert",       "boolean",    "break",      "byte",      "case",
+                 "catch",     "char",         "class",      "const",     "continue",
+                 "default",   "do",           "double",     "else",      "extends",
+                 "false",     "final",        "finally",    "float",     "for",
+                 "goto",      "if",           "implements", "import",    "instanceof",
+                 "int",       "interface",    "long",       "native",    "new",
+                 "null",      "package",      "private",    "protected", "public",
+                 "return",    "short",        "static",     "strictfp",  "super",
+                 "switch",    "synchronized", "this",       "throw",     "throws",
+                 "transient", "true",         "try",        "void",      "volatile",
+                 "while"
+             };
+             int flag=0;
+             for(int i=0;i<array.length;i++)
+             {
+				 if(key.equals(array[i])==true)
+				 flag++;
+			
+			 }
+			 if(flag>0)
+			 return 1;
+			 else 
+			 return 0;
+		 }
+
 	public void cpack()
 	{
 		System.out.print("class ");
@@ -218,6 +246,7 @@ public class ProgPerceptron
 		
 	public static void main(String args[])
 	{
+		Pack obj=new Pack();
 		ProgPerceptron t = new ProgPerceptron();
 /* ====
  *
@@ -229,9 +258,12 @@ public class ProgPerceptron
 		int apss[] = {1,1,0,0,0};
 		t.train(aps,apss,200);
 		Scanner sc = new Scanner(System.in);		
-		System.out.println("Fibonacci/Odd Even/Printing ?");
+		//System.out.println("Fibonacci/Odd Even/Printing ?");
+		System.out.println("What do you want to do?");
 		String flag=sc.nextLine();
-		String ch="",classname="";
+		int num=obj.input(flag);
+		int num1=obj.input1(flag);
+		String ch="",classname="",param="";
 		int cout=0;
 		//cc:
 		/*do
@@ -250,6 +282,7 @@ public class ProgPerceptron
 		classname=sc.nextLine();
 		for(int i=1;i<classname.length();i++)		
 		{
+			int call=keywordstack(classname);
 			if(((int)classname.charAt(0))<65 || ((int)classname.charAt(0))>122 || (((int)classname.charAt(0)>90) && ((int)classname.charAt(0)<97)))
 				{
 				i=0;
@@ -264,30 +297,20 @@ public class ProgPerceptron
 				System.out.println("What do you want to name your class ?");
 		        classname=sc.nextLine();
 		     }
-		     else if(classname.equals("class")==true || classname.equals("void")==true || classname.equals("static")==true)
+		     //else if(classname.equals("class")==true || classname.equals("void")==true || classname.equals("static")==true)
+			else if(call==1)
 		     {
 				i=0;
 				System.out.println("A class name cannot be a reserved keyword");
 				System.out.println("What do you want to name your class ?");
 		        classname=sc.nextLine();  
-			}  		
-		}
-		if(flag.equalsIgnoreCase("printing"))
+			}  
+			}			
+		if(num1==1)
 		{
-			ch="Qwerty";
-		}		
-		else
-		{
-		System.out.println("Scanner or BufferedReader");	
-		ch = sc.nextLine();
-	    }
-	    
-		String param="";
-		if(flag.equalsIgnoreCase("printing"))
-			{
-				System.out.println("What do you want to print?");
+			System.out.println("What do you want to print?");
 		        param = sc.nextLine();
-			}
+		}
 			System.out.println(a1[1]);
 			System.out.println(a2[1]);
 			System.out.println(a3[1]);
@@ -298,13 +321,13 @@ public class ProgPerceptron
 			System.out.println("\n");
 		if(a1[1] >= 0.5)
 		{
-			if(ch.equalsIgnoreCase("scanner"))
+			if(num==5)
 			{
-				t.Spack();
+				obj.Spack();
 			}
-			else if(ch.equalsIgnoreCase("buffer"))
+			else if(num==10)
 			{
-				t.Bpack();
+				obj.Bpack();
 			}
 		}
 		if(a2[1] >= 0.5)
@@ -329,13 +352,13 @@ public class ProgPerceptron
 		if(a4[0] >= 0.5)
 		{
 			
-			if(ch.equalsIgnoreCase("scanner"))
+			if(num==5)
 			{
-				t.Sobj();
+				obj.Sobj();
 			}
-			else if(ch.equalsIgnoreCase("buffer"))
+			else if(num==10)
 			{
-				t.Bobj();
+				obj.Bobj();
 			}
 		
 			
