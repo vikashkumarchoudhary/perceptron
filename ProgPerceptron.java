@@ -10,77 +10,115 @@ public class ProgPerceptron
 	{
 		System.out.println("import java.io.*;");
 	}
+	//----------------SCANNER OBJECT CREATION----------------------
 	public void Sobj()
 	{
 		System.out.println("Scanner sc = new Scanner(System.in);");
 	}
+	//----------------BUFFERED READER OBJECT CREATION---------------
 	public void Bobj()
 	{
 		System.out.println("BufferedReader br = new BufferedReader(new InputStreamReader);");
 	}
 	public void cpack()
 	{
-		System.out.print("class\t");
+		System.out.print("class ");
 	}
-	public void cname()
+	//------------------TO PRINT STRAY STRING--------------------------
+	public void cname(String classname)
 	{
-		System.out.println("anyname");
-		System.out.println("{");
+		System.out.println(classname);
 	}
+	//---------------------MAIN FUNCTION-----------------------------
 	public void mfunc()
 	{
 		System.out.println("public static void main(String[] args)");
-		System.out.println("{");
 	}
+	//--------------------MAIN WITH EXCEPTION HANDLING
 	public void mfunc1()
 	{
 		System.out.println("public static void main(String[] args)throws Exception");
-		System.out.println("{");
 	}
-	public void print(String param)
+	//--------------------PRINT WITH QUOTES----------------
+	public void printwithquote(String param)
 	{
 		System.out.println("System.out.println(\""+param+"\");");
 	}
-	public void endmain()
+	//------------------PRINT WITHOUT QUOTES------------------
+	public void printwithoutquote(String param)
+	{
+		System.out.println("System.out.println("+param+");");
+	}
+	//------------------CLOSE BRACES-----------------
+	public void closebrace() 
 	{
 		System.out.println("}");
 	}
-	public void endclass()
+	//------------------OPEN BRACES-------------------
+	public void openbrace()
 	{
-		System.out.println("}");
+		System.out.println("{");
 	}
-	public void inits()
+	//------------------SCANNER INPUT FOR INT--------------
+	public void scannerinputInt()
+	{
+		System.out.println("sc.nextInt();");
+	}
+	//------------------BUFFERED READER INPUT FOR INT-----------
+	public void bufferinputInt()
+	{
+		System.out.println("Integer.parseInt(br.readLine());");
+	}
+	//------------------SCANNER INPUT FOR STRING----------------
+	public void scannerinputString()
+	{
+		System.out.println("sc.nextLine();");
+	}
+	//-------------------BUFFERED READER INPUT FOR STRING-------------
+	public void bufferinputString()
+	{
+		System.out.println("br.readLine();");
+	}
+	//----------------INITIALIZATION OF N--------------------------
+	public void init()
 	{
 		System.out.println("int n;");
-		System.out.println("System.out.println(\"Enter the number - \");");
-		System.out.println("n=sc.nextInt();");
 	}
-	public void initb()
-	{
-		System.out.println("int n;");
+	//------------------------INPUTTING------------------
+	public void inp()
+	{	
 		System.out.println("System.out.println(\"Enter the number - \");");
-		System.out.println("n=Integer.parseInt(br.readLine());");
+		System.out.print("n=");
 	}
-	public void loop()
+	//-----------------INITIALIZATION FOR FIBONACCI-----------------
+	public void fibovarinit()
 	{
 		System.out.println("int a=0,b=1,c=0;");
+	}
+	//-------------------LOOP STATEMENT 0 TO N-----------------
+	public void loop()
+	{
 		System.out.println("for(int i=0;i<=n;i++)");
-		System.out.println("{");
 	}
 	public void cond()
 	{
-		System.out.println("if(n%2==0)");
-		System.out.println("System.out.println(\"Even\");");
-		System.out.println("else");
-		System.out.println("System.out.println(\"Odd\");");
+		System.out.println("if(n%2==0)");		
 	}
+	//------------------PRINT ONLY ELSE---------------------
+	public void elseprint()
+	{
+		System.out.println("else");
+	}
+		
 	public void fiboo()
 	{
-		System.out.println("System.out.println(c);");
 		System.out.println("a=b;");
-		System.out.println("b=c");
-		System.out.println("c=a+b");
-		System.out.println("}");
+		System.out.println("b=c;");
+		
+	}
+	public void add()
+	{
+		System.out.println("c=a+b;");
 	}
 		
 	/*public static void main(String[] args)
@@ -155,14 +193,14 @@ public class ProgPerceptron
 				//a4[1] = sigmoid(a4[0]*theta4[0]+a4[1]*theta4[1]);
 				//a4[3]=sigmoid(a4[1]*theta5[0]+a4[2]*theta5[1]);
 				 theta3[0] = r.nextDouble();
-				                                 theta3[1] = r.nextDouble();
-				a4[1] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				 theta3[1] = r.nextDouble();
+				 a4[1] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
 				 theta3[0] = r.nextDouble();
-				                                 theta3[1] = r.nextDouble();
-				a4[2] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				 theta3[1] = r.nextDouble();
+				 a4[2] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
 				 theta3[0] = r.nextDouble();
-				                                 theta3[1] = r.nextDouble();
-				a4[3] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				 theta3[1] = r.nextDouble();
+				 a4[3] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
 			}
 			
 		}
@@ -193,16 +231,57 @@ public class ProgPerceptron
 		Scanner sc = new Scanner(System.in);		
 		System.out.println("Fibonacci/Odd Even/Printing ?");
 		String flag=sc.nextLine();
-		String ch="";
+		String ch="",classname="";
+		int cout=0;
+		//cc:
+		/*do
+		{
+		System.out.println("What do you want to name your class ?");
+		classname=sc.nextLine();
+		if(((int)classname.charAt(0))<65 || ((int)classname.charAt(0))>122 || (((int)classname.charAt(0)>90) && ((int)classname.charAt(0)<97)))
+		{
+			//cout++;
+			System.out.println("A Class name cannot start with a Special Character or digit !");
+			//continue cc;
+		}
+			
+	}while(((int)classname.charAt(0))<65 || ((int)classname.charAt(0))>122 || (((int)classname.charAt(0)>90) && ((int)classname.charAt(0)<97)));
+	*/	System.out.println("What do you want to name your class ?");
+		classname=sc.nextLine();
+		for(int i=1;i<classname.length();i++)		
+		{
+			if(((int)classname.charAt(0))<65 || ((int)classname.charAt(0))>122 || (((int)classname.charAt(0)>90) && ((int)classname.charAt(0)<97)))
+				{
+				i=0;
+				System.out.println("A Class name cannot start with a Special Character or digit !");
+				System.out.println("What do you want to name your class ?");
+		        classname=sc.nextLine();
+			}
+			else if(Character.isDigit(classname.charAt(i))==false && ((int)classname.charAt(i))!=95 && Character.isLetter(classname.charAt(i))==false)
+			{							
+				i=0;
+				System.out.println("A class name cannot contain special characters except '_'");
+				System.out.println("What do you want to name your class ?");
+		        classname=sc.nextLine();
+		     }
+		     else if(classname.equals("class")==true || classname.equals("void")==true || classname.equals("static")==true)
+		     {
+				i=0;
+				System.out.println("A class name cannot be a reserved keyword");
+				System.out.println("What do you want to name your class ?");
+		        classname=sc.nextLine();  
+			}  		
+		}
 		if(flag.equalsIgnoreCase("printing"))
 		{
 			ch="Qwerty";
-		}
+		}		
 		else
 		{
 		System.out.println("Scanner or BufferedReader");	
 		ch = sc.nextLine();
 	    }
+	    
 		String param="";
 		if(flag.equalsIgnoreCase("printing"))
 			{
@@ -231,17 +310,20 @@ public class ProgPerceptron
 		if(a2[1] >= 0.5)
 		{
 			t.cpack();
-			t.cname();
+			t.cname(classname);
+			t.openbrace();
 		}
 		if(a3[1] >= 0.5)
 		{
 			if(ch.equalsIgnoreCase("scanner")||flag.equalsIgnoreCase("printing"))
 			{
 				t.mfunc();
+				t.openbrace();
 			}
 			else
 			{
 				t.mfunc1();
+				t.openbrace();
 			}
 		}
 		if(a4[0] >= 0.5)
@@ -260,7 +342,7 @@ public class ProgPerceptron
 		}
 		if(flag.equalsIgnoreCase("printing"))
 		{
-		        t.print(param);
+		        t.printwithquote(param);
 			}
 		else
 		{
@@ -269,11 +351,15 @@ public class ProgPerceptron
 		{
 			if(ch.equalsIgnoreCase("scanner"))
 			{
-				t.inits();
+				t.init();
+				t.inp();
+				t.scannerinputInt();
 			}
 			else if(ch.equalsIgnoreCase("buffer"))
 			{
-				t.initb();
+				t.init();
+				t.inp();
+				t.bufferinputInt();
 			}
 			
 		}
@@ -281,7 +367,9 @@ public class ProgPerceptron
 		{
 			if(flag.equalsIgnoreCase("fibonacci"))
 			{
+				t.fibovarinit();
 				t.loop();
+				t.openbrace();
 			}
 		}
 		if(a4[3]>=0.5)
@@ -289,17 +377,23 @@ public class ProgPerceptron
 			if(flag.equalsIgnoreCase("odd"))
 			{
 				t.cond();
+				t.printwithquote("Even");
+				t.elseprint();
+				t.printwithquote("Odd");
 			}
 			else if(flag.equalsIgnoreCase("fibonacci"))
 			{
+				t.printwithoutquote("c");
 				t.fiboo();
+				t.add();
+				t.closebrace();
 			}
 			
 				
 		}
 		}
 			
-			t.endmain();
-			t.endclass();
+			t.closebrace();
+			t.closebrace();
 	}
 }
