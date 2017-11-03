@@ -265,6 +265,14 @@ public class ProgPerceptron
 		int cout=0;
 		System.out.println("What do you want to name your class ?");
 		classname=sc.nextLine();
+		for(int i = 0;i<flag.length;i++)
+		{
+			if(flag[i].equalsIgnoreCase("printing"))
+			{
+				System.out.println("what do you want to print?");
+				param = sc.nextLine();
+			}
+		}
 		for(int i=1;i<classname.length();i++)
 		{
 			int call=keywordstack(classname);
@@ -299,8 +307,8 @@ public class ProgPerceptron
 			t.train(aps,apss,200);
 			if(num1==1)
 			{
-				System.out.println("What do you want to print?");
-		        	param = sc.nextLine();
+				/*System.out.println("What do you want to print?");
+		        	param = sc.nextLine();*/
 				a1[1] = a4[0] = a4[1] = a4[2] = a4[3] = a4[4] = a4[5] = 0; 
 			}
 			System.out.println("\n");
@@ -430,11 +438,11 @@ public class ProgPerceptron
 				}
 				a4[2] = a4[3] = a4[4] = 0;
 			}
-			else
+			if(flag[z].equalsIgnoreCase("printing"))
 			{
 				t.printwithquote(param);
 			}
-		/*System.out.println(a1[1]);
+		System.out.println(a1[1]);
 		System.out.println(a2[1]);
 		System.out.println(a3[1]);
 		System.out.println(a4[0]);
@@ -442,7 +450,7 @@ public class ProgPerceptron
 		System.out.println(a4[2]);
 		System.out.println(a4[3]);
 		System.out.println(a4[4]);
-		System.out.println(a4[5]);*/
+		System.out.println(a4[5]);
 		}
 	t.closebrace();
 	t.closebrace();	
