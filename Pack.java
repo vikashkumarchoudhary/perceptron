@@ -29,7 +29,7 @@ public class Pack
                 System.out.println("BufferedReader br = new BufferedReader(new InputStreamReader);");
         }
 
-	String quest[]={"Fibonacci","Odd","Even"};
+	String quest[]={"Fibonacci","Odd","Even","Palindrome"};
 	public int input(String ss)
 	{	
 		//Random r=new Random();
