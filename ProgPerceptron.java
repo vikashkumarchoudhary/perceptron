@@ -129,6 +129,22 @@ public class ProgPerceptron
 	{
 		System.out.println("for(int i=0;i<n;i++)");
 	}
+	public void remi()
+	{
+		System.out.println("if(n%i == 0)");
+	}
+	public void primeinit()
+	{
+		System.out.println("int cnt = 0;");
+	}
+	public void increment()
+	{
+		System.out.println("cnt++;");
+	}
+	public void primecheck()
+	{
+		System.out.println("if(cnt == 1)");
+	}
 	//-------------------WHILE N > 0------------------------
 	public void wloop()
 	{
@@ -176,7 +192,7 @@ public class ProgPerceptron
 	static double a1[] = new double[2];
 	static double a2[] = new double[2];
 	static double a3[] = new double[2];
-	static double a4[] = new double[5];
+	static double a4[] = new double[6];
 	public  static int train(int inputs[][],int outputs[],int epoch)
 	{
 		//random initialisation
@@ -199,7 +215,8 @@ public class ProgPerceptron
 			a4[1] = inputs[i1][j1++];
 			a4[2] = inputs[i1][j1++];
 			a4[3] = inputs[i1][j1++];
-			a4[4] = inputs[i1][j1];
+			a4[4] = inputs[i1][j1++];
+			a4[5] = inputs[i1][j1];
 			for(int i = 0;i<epoch;i++)
 			{
 				theta3[0] = r.nextDouble();
@@ -219,9 +236,12 @@ public class ProgPerceptron
 				theta3[0] = r.nextDouble();
 				theta3[1] = r.nextDouble();
 				a4[4] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
+				theta3[0] = r.nextDouble();
+				theta3[1] = r.nextDouble();
+				a4[5] = sigmoid(a3[0]*theta3[0] + a3[1]*theta3[1]);
 			}
 		}
-		if(sigmoid(a1[1] + a2[1] + a3[1] + a4[0] + a4[1] + a4[2] + a4[3] + a4[4]) > 0.5)
+		if(sigmoid(a1[1] + a2[1] + a3[1] + a4[0] + a4[1] + a4[2] + a4[3] + a4[4] + a4[5]) > 0.5)
 			return 1;
 		else
 			return 0;
@@ -234,10 +254,10 @@ public class ProgPerceptron
 	{
 		Pack obj=new Pack();
 		ProgPerceptron t = new ProgPerceptron();
-		int aps[][] = {{1,1,1,1,1,1,1},{1,1,0,0,0,1,0},{1,1,0,1,0,0,0},{1,0,1,0,0,0,0},{0,0,1,1,0,0,0}};
+		int aps[][] = {{1,1,1,1,1,1,1,1},{1,1,0,0,0,1,0,1},{1,1,0,1,0,0,0,0},{1,0,1,0,0,0,0,0},{0,0,1,1,0,0,0,1}};
 		int apss[] = {1,1,0,0,0};
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Fibonacci/Odd Even/Printing/palindrome ?");
+		System.out.println("Fibonacci/Odd Even/Printing/palindrome/prime ?");
 		System.out.println("What do you want to do?");
 		String var = sc.nextLine();
 		String flag[] =var.split(" ");
@@ -281,7 +301,7 @@ public class ProgPerceptron
 			{
 				System.out.println("What do you want to print?");
 		        	param = sc.nextLine();
-				a1[1] = a4[0] = a4[1] = a4[2] = a4[3] = a4[4] = 0; 
+				a1[1] = a4[0] = a4[1] = a4[2] = a4[3] = a4[4] = a4[5] = 0; 
 			}
 			System.out.println("\n");
 			if(flag[z].equalsIgnoreCase("printing") != true && pack_cnt == 0)
@@ -360,7 +380,7 @@ public class ProgPerceptron
 					t.fiboo();
 					t.add();
 					t.closebrace();
-					a4[3] = a4[4] = 0;
+					a4[3] = a4[4] = a4[5] = 0;
 				}
 			}
 			if(a4[3]>=0.5)
@@ -371,7 +391,7 @@ public class ProgPerceptron
 					t.printwithquote("Even");
 					t.elseprint();
 					t.printwithquote("Odd");
-					a4[2] = a4[4] = 0;
+					a4[2] = a4[4] = a4[5] = 0;
 				}
 			}
 			if(a4[4] >= 0.5)
@@ -390,14 +410,31 @@ public class ProgPerceptron
 					t.yes();
 					t.elseprint();
 					t.no();
+					a4[2] = a4[3] = a4[5] = 0;
 				}
-				a2[2] = a2[3] = 0;
 			}			
+			if(a4[5] >= 0.5)
+			{
+				if(flag[z].equalsIgnoreCase("prime"))
+				{
+					t.primeinit();
+					t.loop();
+					t.openbrace();
+					t.remi();
+					t.increment();
+					t.closebrace();
+					t.primecheck();
+					t.yes();
+					t.elseprint();
+					t.no();
+				}
+				a4[2] = a4[3] = a4[4] = 0;
+			}
 			else
 			{
 				t.printwithquote(param);
 			}
-		System.out.println(a1[1]);
+		/*System.out.println(a1[1]);
 		System.out.println(a2[1]);
 		System.out.println(a3[1]);
 		System.out.println(a4[0]);
@@ -405,6 +442,7 @@ public class ProgPerceptron
 		System.out.println(a4[2]);
 		System.out.println(a4[3]);
 		System.out.println(a4[4]);
+		System.out.println(a4[5]);*/
 		}
 	t.closebrace();
 	t.closebrace();	
